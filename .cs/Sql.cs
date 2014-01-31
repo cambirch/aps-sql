@@ -12,7 +12,7 @@ namespace aps_sql_cs
         public async Task<object> Invoke(object input) {
             var parameters = (IDictionary<string, object>)input;
             var functionName = (string)parameters["fn"];
-            var connectionString = (string)parameters["conStr"];
+            var connectionString = parameters.ContainsKey("conStr") ? (string)parameters["conStr"] : "";
 
             switch (functionName) {
                 case "execute":
@@ -85,6 +85,7 @@ namespace aps_sql_cs
 
         private object BeginTransaction(string connectionString, IDictionary<string, object> parameters) {
             var connection = new SqlConnection(connectionString);
+            connection.Open();
             var transaction = connection.BeginTransaction(IsolationLevel.Unspecified);
 
             var transObj = new TransactionObject {Connection = connection, Transaction = transaction};
@@ -127,7 +128,6 @@ namespace aps_sql_cs
             using (var command = new SqlCommand(commandString, connection, transaction)) {
                 SetParametersOnCommand(command, parameters);
 
-                await connection.OpenAsync();
                 using (SqlDataReader reader = await command.ExecuteReaderAsync(CommandBehavior.SingleResult)) {
                     return await ReaderToFieldData(reader);
                 }
@@ -144,7 +144,6 @@ namespace aps_sql_cs
             using (var command = new SqlCommand(commandString, connection, transaction)) {
                 SetParametersOnCommand(command, parameters);
 
-                await connection.OpenAsync();
                 return await command.ExecuteNonQueryAsync();
             }
         }
