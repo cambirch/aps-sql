@@ -21,7 +21,30 @@ Using this module requires a few simple steps in order to install it as a natura
 
     var sql = require('aps-sql');
     sql.connectionString('Data Source=devtest;Initial Catalog=entCustomer;User Id=sa;Password=admin;');
+    
+    // Perform a select
     console.log(sql.executeQuery('Select top 3 assetID from asset'));
+	// Perform an insert
+    sql.executeNonQuery("Insert INTO asset (AssetID) VALUES ( 'abc' )");
+
+With **Transaction** support:
+
+    var sql = require('aps-sql');
+    sql.connectionString('Data Source=devtest;Initial Catalog=entCustomer;User Id=sa;Password=admin;');
+    
+    // Create the transaction
+	var transaction = sql.beginTransaction();
+	
+    // Perform a select
+    console.log(transaction.executeQuery('Select top 3 assetID from asset'));
+	// Perform an insert
+    transaction.executeNonQuery("Insert INTO asset (AssetID) VALUES ( 'abc' )");
+	
+	// Rollback the transaction
+	transaction.cancel();
+	
+	// Commit the transaction
+	transaction.commit();
 
 ## TypeScript ##
 
