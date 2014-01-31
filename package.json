@@ -1,6 +1,6 @@
 {
   "name": "aps-sql",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Uses Edge.js & ADO.NET to offer powerful SQL manipulation.",
   "main": "sql.js",
   "scripts": {
