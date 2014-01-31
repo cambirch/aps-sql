@@ -5,7 +5,7 @@ A node.js library that uses Edge.js and ADO.NET to allow for proper SQL use from
 
 ### Installing for use ###
 
-This module is **not** published to NPM nor will it be anytime soon.  This is important at this point!
+This module is **not** published to NPM nor will it be anytime soon.  This is important at this point because if it **were** published, you would just npm install <package-name>!
 
 Using this module requires a few simple steps in order to install it as a natural NPM module.
 
