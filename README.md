@@ -10,7 +10,7 @@ This module is **not** published to NPM nor will it be anytime soon.  This is im
 Using this module requires a few simple steps in order to install it as a natural NPM module.
 
 - Clone the repository into a local directory
-- Open an Administrator command prompt
+- Open an **Administrator** command prompt
 - Browse to the directory that the repository is cloned into
 - Use the cmd: `npm link`
 - Browse to the directory that you are building a node project that requires the aps-sql module
@@ -20,7 +20,7 @@ Using this module requires a few simple steps in order to install it as a natura
 ## Using ##
 
     var sql = require('aps-sql');
-    sql.connectionString('Data Source=devtest;Initial Catalog=entCustomer;User Id=sa;Password=admin;');
+    sql.connectionString('<the connection string>');
     
     // Perform a select
     console.log(sql.executeQuery('Select top 3 assetID from asset'));
@@ -30,7 +30,7 @@ Using this module requires a few simple steps in order to install it as a natura
 With **Transaction** support:
 
     var sql = require('aps-sql');
-    sql.connectionString('Data Source=devtest;Initial Catalog=entCustomer;User Id=sa;Password=admin;');
+    sql.connectionString('<the connection string>');
     
     // Create the transaction
 	var transaction = sql.beginTransaction();
@@ -45,6 +45,15 @@ With **Transaction** support:
 	
 	// Commit the transaction
 	transaction.commit();
+
+Queries with parameters:
+
+    var sql = require('aps-sql');
+    sql.connectionString('<the connection string>');
+
+    sql.executeQuery('Select AssetID From Asset Where AssetID = @param', {param: 'abc'});
+    // or
+    sql.executeQuery('Select AssetID From Asset Where AssetID = @param', {'@param': 'abc'});
 
 ## TypeScript ##
 

@@ -1,8 +1,13 @@
 {
+  "private": true,
   "name": "aps-sql",
   "version": "0.2.0",
   "description": "Uses Edge.js & ADO.NET to offer powerful SQL manipulation.",
-  "main": "sql.js",
+  "homepage": "https://github.com/camMCC/aps-sql",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:camMCC/aps-sql.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,5 +19,8 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "edge": "~0.7.14"
-  }
+  },
+  "os": "win32",
+  "main": "sql.js",
+  "files": ["sql.js", ".cs/Sql.cs"]
 }
