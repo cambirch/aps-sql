@@ -22,5 +22,9 @@
   },
   "os": "win32",
   "main": "sql.js",
-  "files": ["sql.js", ".cs/Sql.cs"]
+  "files": [
+    "sql.js",
+    ".cs/Sql.cs",
+    "aps-sql.d.ts"
+  ]
 }

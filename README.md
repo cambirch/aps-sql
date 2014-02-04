@@ -11,6 +11,9 @@ Installation has been simplified in this version.
 
     npm install camMCC/aps-sql --save
 
+**NOTE:** The above command is CASE SENSITIVE.
+
+
 ## Using ##
 
     var sql = require('aps-sql');
